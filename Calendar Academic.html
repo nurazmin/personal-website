@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UiTM Academic Calendar</title>
+    <style>
+      
+      body {
+  background-color: #ffe6e6;
+}
+        body {
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            margin: 0;
+        }
+
+
+        h1 {
+            font-family: "Broadway", sans-serif;
+            font-style: normal;
+            text-align: center;
+            color: #cc0044;
+            font-weight: 800;
+        }
+
+        p {
+            text-align: center;
+            color: #616569;
+            letter-spacing: .03em;
+            font-size: 1.5em;
+            padding: 2% 0;
+        }
+
+        .button {
+            padding: 5% 3%;
+            border: 3px solid #e0ccc8;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            color: #000000;
+            text-align: center;
+            display: block;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin: 4% auto;
+        }
+
+        .button:hover {
+            color: #fff;
+            background-color: #e0ccc8;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        /* Slideshow CSS styles */
+        #slideshow-container {
+            max-width: 800px;
+            position: relative;
+            margin: auto;
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -30px;
+            color: #e0ccc8;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Add any additional styles you want */
+    </style>
+</head>
+<body>
+
+<main>
+    <h1>UiTM Academic Calendar</h1>
+    <p>OCTOBER 2023 - FEBRUARY 2024</p>
+    <div id="slideshow-container">
+        <!-- Images in the slideshow -->
+        <div class="mySlides">
+            <img src="images/2.jpg" alt="Slide 1">
+        </div>
+        <div class="mySlides">
+            <img src="images/3.jpg" alt="Slide 2">
+        </div>
+        <div class="mySlides">
+            <img src="images/4.jpg" alt="Slide 3">
+        </div>
+        <!-- Add more slides as needed -->
+
+        <!-- Navigation buttons -->
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+    <a href="https://drive.google.com/file/d/1VuVyGBtexjzW3T6k6ZtjCyXKsi40tnfZ/view" class="button" target="_blank" rel="noopener noreferrer">Download the Calendar (PDF Version)</a>
+</main>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+    }
+</script>
+
+</body>
+</html>

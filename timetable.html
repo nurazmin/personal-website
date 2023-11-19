@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable</title>
+    <style>
+
+        body {
+  background-color: #ffe6e6;
+        }   
+
+        body {
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin: 50px auto;
+            font-size: 1.2em;
+        }
+
+        th, td {
+            border: 1px solid #000000;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #ffcccc;
+        }
+
+        td {
+            background-color: #e0ccc8;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000000;
+            transition: .5s;
+        }
+
+        a:hover {
+            background-color: #e0ccc8;
+            color: white;
+        }
+
+        #courseDetails {
+            text-align: center;
+            display: none;
+            margin: 20px auto;
+            background-color: #e0ccc8;
+            padding: 20px;
+            border: 2px solid #e0ccc8;
+            border-radius: 8px;
+        }
+
+        /* Additional styles for the title */
+        h1 {
+            font-family: "Broadway", sans-serif;
+            font-style: normal;
+            text-align: center;
+            color: #cc0044; 
+            font-weight: 800;
+        }
+
+        /* Add other styles as needed */
+    </style>
+</head>
+<body>
+
+<main>
+    <!-- Title follows CSS styles -->
+    <h1>Timetable - CDCS2644A (OCT 2023/FEB 2024)</h1>
+
+    <main>
+<table border="5" cellspacing="0" align="center" class="box1">
+    <tr>
+        <td align="center" height="50" width="100"><br><b>Day/Hours</b></br></td>
+        <td align="center" height="50" width="100"><b>I<br>8:00 - 10:00</b></td>
+        <td align="center" height="50" width="100"><b>II<br>10:00 - 12:00</b></td>
+        <td align="center" height="50" width="100"><b>III<br>12:00 - 14:00</b></td>
+        <td align="center" height="50" width="100"><b>IV<br>14:00 - 16:00</b></td>
+        <td align="center" height="50" width="100"><b>V<br>16:00 - 18:00</b></td>
+    </tr>
+    <tr>
+        <td align="center" height="50"><b>Monday</b></td>
+        <td align="center" height="50"></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('ISP581')"><b>ISP581 (CS1 MAKMAL 9)</b></a></td>
+        <td align="center" height="50"></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('ISP550')"><b>ISP550 (LECTURE)</b></a></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('ISP640')"><b>ISP640 (LECTURE)</b></a></td>
+    </tr>
+    <tr>
+        <td align="center" height="50"><b>Tuesday</b></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('ISP581')"><b>ISP581 (ONLINE)</b></a></td>
+        <td align="center" height="50"></td>
+        <td align="center" height="50"></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('CST2KB')"><b>CST2KB KOREAN (CS1 BK06)</b></a></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('CSC443')"><b>CSC443 (ONLINE)</b></a></td>
+    </tr>
+    <tr>
+        <td align="center" height="50"><b>Wednesday</b></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('ELC650')"><b>ELC650 (ONLINE)</b></a></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('ISP565')"><b>ISP565 (CS2 I.S LAB)</b></a></td>
+        <td align="center" height="50"></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('ISP550')"><b>ISP550 (CS2 I.S LAB)</b></a></td>
+        <td align="center" height="50"></td>
+    </tr>
+    <tr>
+        <td align="center" height="50"><b>Thursday</b></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('ISP640')"><b>ISP640 (CS1 BK03)</b></a></td>
+        <td align="center" height="50"></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('CSC443')"><b>CSC443 (CS2 MAKMAL MK 17)</b></a></td>
+        <td align="center" height="50"></td>
+        <td align="center" height="50"></td>
+    </tr>
+    <tr>
+        <td align="center" height="50"><b>Friday</b></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('CTU554')"><b>CTU554 (ONLINE)</b></a></td>
+        <td align="center" height="50"><a href="#" onclick="showCourseDetails('ISP565')"><b>ISP565 (CS2 DK03)</b></a></td>
+        <td align="center" height="50"></td>
+        <td align="center" height="50"></td>
+        <td align="center" height="50"></td>
+    </tr>
+    <!-- Add other days and courses similarly -->
+</table>
+
+<!-- Course Details Container -->
+<div id="courseDetails" style="display: none; text-align: center;">
+    <h2 id="courseName"></h2>
+    <p id="lecturerName"></p>
+</div>
+
+<script>
+    function showCourseDetails(courseCode) {
+        var courseDetails = getCourseDetails(courseCode);
+        document.getElementById('courseName').innerHTML = courseDetails.courseName;
+        document.getElementById('lecturerName').innerHTML = courseDetails.lecturerName;
+        document.getElementById('courseDetails').style.display = 'block';
+    }
+
+    function getCourseDetails(courseCode) {
+        switch (courseCode) {
+            case 'CSC443':
+                return { courseName: 'WEB PROGRAMMING', lecturerName: 'AZIZIAN BIN MOHD SAPAWI (LECTURE) & NUR AINA KHADIJAH ADNAN (LAB)' };
+            case 'ISP550':
+                return { courseName: 'INFORMATION SYSTEMS ENGINEERING', lecturerName: 'DR. SURIYATI BINTI RAZALI' };
+            case 'ISP640':
+                return { courseName: 'COMPUTING PROJECT MANAGEMENT', lecturerName: 'PROFESOR MADYA DR NORJANSALIKA BINTI JANOM (LECTURE) & DR. NADHRATUNNAIM NASARUDIN (LAB)' };
+            // Add other cases similarly
+            case 'CTU554':
+                return { courseName: 'VALUES AND CIVILIZATION II', lecturerName: 'NURUL FATHIN BINTI NGADIMAN' };
+            case 'ELC650':
+                return { courseName: 'ENGLISH FOR PROFESSIONAL INTERACTION', lecturerName: 'SOFEA AZLENA TUNG ADIB VINCENT TUNG' };
+            case 'ISP565':
+                return { courseName: ' DATA MINING', lecturerName: 'PROFESOR MADYA DR SHUZLINA BINTI ABDUL RAHMAN (LECTURE) & MISS SHAHEERA (LAB)' };
+            case 'ISP581':
+                return { courseName: 'ENTERPRISE INFORMATION SYSTEMS', lecturerName: 'DR. KAMALIA AZMA BINTI KAMARUDDIN' };
+            case 'TAC451':
+                return { courseName: ' INTRODUCTORY ARABIC (LEVEL II)', lecturerName: 'MOHD AKASHAH' };
+            default:
+                return { courseName: '', lecturerName: '' };
+        }
+    }
+</script>
+    </main>
+
+</body>
+</html>
